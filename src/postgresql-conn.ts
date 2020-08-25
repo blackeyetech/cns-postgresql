@@ -62,7 +62,7 @@ class CNPostgreSqlConn extends CNShell {
 
     let text = `INSERT INTO ${collection} (${fieldsStr}) VALUES (${valuesStr})`;
     if (id !== undefined) {
-      text += " RETURNING ${id}";
+      text += ` RETURNING ${id}`;
     }
 
     let query: pg.QueryConfig = { text, values };

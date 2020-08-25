@@ -50,16 +50,16 @@
   "author": "Black Eye Technology",
   "license": "MIT",
   "devDependencies": {
-    "husky": "^3.0.2",
-    "lint-staged": "^9.2.1",
-    "prettier": "^1.18.2",
-    "typescript": "^3.5.3"
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@types/node": "^12.6.8",
-    "@types/pg": "^7.4.14",
-    "cn-shell": "^2.0.1",
-    "pg": "^7.12.0"
+    "@types/node": "^12.12.54",
+    "@types/pg": "^7.14.4",
+    "cn-shell": "^2.13.0",
+    "pg": "^7.18.2"
   },
   "repository": {
     "type": "git",
