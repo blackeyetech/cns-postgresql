@@ -58,8 +58,8 @@
   "dependencies": {
     "@types/node": "^12.12.54",
     "@types/pg": "^7.14.4",
-    "cn-shell": "^2.13.0",
-    "pg": "^7.18.2"
+    "cn-shell": "^2.14.0",
+    "pg": "^8.3.2"
   },
   "repository": {
     "type": "git",
