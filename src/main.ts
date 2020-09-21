@@ -49,6 +49,7 @@ class CNPostgreSql extends CNShell {
             this.isServerReady(resolve, reject);
           }, 5000);
         } else {
+          this.error("DB returned the following error: (%s)", e);
           reject(false);
         }
       });
