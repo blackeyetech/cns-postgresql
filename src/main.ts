@@ -90,4 +90,4 @@ class CNPostgreSql extends CNShell {
   }
 }
 
-export { CNPostgreSql };
+export { CNPostgreSql, CNPostgreSqlConn };
