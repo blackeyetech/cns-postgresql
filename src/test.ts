@@ -3,7 +3,7 @@
 import { CNPostgreSql } from "./main";
 
 async function run() {
-  let pgsql = new CNPostgreSql("PG-SQL", {});
+  let pgsql = new CNPostgreSql("PG-SQL");
   let conn = pgsql.connection("conn");
   let res = await conn.read("switch", ["name"]);
 
