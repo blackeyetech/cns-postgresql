@@ -3,16 +3,44 @@ import CNShell from "cn-shell";
 import { CNPostgreSqlConn } from "./postgresql-conn";
 import * as pg from "pg";
 
+// Postgres config consts here
+const CFG_PG_USER = "USER";
+const CFG_PG_DB = "DB";
+const CFG_PG_PASSWORD = "PASSWORD";
+const CFG_PG_HOST = "HOST";
+const CFG_PG_PORT = "PORT";
+const CFG_PG_SSL = "SSL";
+
+const DEFAULT_HOST = "localhost";
+const DEFAULT_PORT = "5432";
+const DEFAULT_SSL = "N";
+
 // Class CNPostgreSQL here
 class CNPostgreSql extends CNShell {
   // Properties here
   private _pool: pg.Pool;
 
   // Constructor here
-  constructor(name: string, poolCfg: pg.PoolConfig) {
+  constructor(name: string) {
     super(name);
 
-    this._pool = new pg.Pool(poolCfg);
+    let user = this.getRequiredCfg(CFG_PG_USER);
+    let database = this.getRequiredCfg(CFG_PG_DB);
+    let password = this.getRequiredCfg(CFG_PG_PASSWORD);
+    let host = this.getCfg(CFG_PG_HOST, DEFAULT_HOST);
+    let port = parseInt(this.getCfg(CFG_PG_PORT, DEFAULT_PORT), 10);
+    let ssl = this.getCfg(CFG_PG_SSL, DEFAULT_SSL).toUpperCase();
+
+    this._pool = new pg.Pool({
+      user,
+      database,
+      password,
+      host,
+      port,
+      ssl: {
+        rejectUnauthorized: ssl === "N" ? false : true,
+      },
+    });
 
     this._pool.on("error", e => {
       this.error(e);
