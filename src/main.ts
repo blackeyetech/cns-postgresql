@@ -4,12 +4,12 @@ import { CNPostgreSqlConn, CNPostgreSqlReadOptions } from "./postgresql-conn";
 import * as pg from "pg";
 
 // Postgres config consts here
-const CFG_PG_USER = "USER";
-const CFG_PG_DB = "DB";
-const CFG_PG_PASSWORD = "PASSWORD";
-const CFG_PG_HOST = "HOST";
-const CFG_PG_PORT = "PORT";
-const CFG_PG_SSL = "SSL";
+const CFG_PG_USER = "PG_USER";
+const CFG_PG_DB = "PG_DB";
+const CFG_PG_PASSWORD = "PG_PASSWORD";
+const CFG_PG_HOST = "PG_HOST";
+const CFG_PG_PORT = "PG_PORT";
+const CFG_PG_SSL = "PG_SSL";
 
 const DEFAULT_HOST = "localhost";
 const DEFAULT_PORT = "5432";
