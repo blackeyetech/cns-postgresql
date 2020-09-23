@@ -4,11 +4,11 @@ import * as pg from "pg";
 
 //Interfaces here
 interface CNPostgreSqlReadOptions {
-  orderBy: string[];
-  orderByDesc: string[];
-  groupBy: string[];
-  format: "json" | "array";
-  distinct: boolean;
+  orderBy?: string[];
+  orderByDesc?: string[];
+  groupBy?: string[];
+  format?: "json" | "array";
+  distinct?: boolean;
 }
 
 // CNPostgreSqlConn class here
@@ -84,14 +84,14 @@ class CNPostgreSqlConn extends CNShell {
     collection: string,
     fields: string[] = ["*"],
     criteria: { [key: string]: any } = {},
-    opts: CNPostgreSqlReadOptions = {
-      format: "json",
-      distinct: false,
-      orderBy: [],
-      groupBy: [],
-      orderByDesc: [],
-    },
+    opts: CNPostgreSqlReadOptions = {},
   ) {
+    if (opts.format === undefined) opts.format = "json";
+    if (opts.distinct === undefined) opts.distinct = false;
+    if (opts.orderBy === undefined) opts.orderBy = [];
+    if (opts.groupBy === undefined) opts.groupBy = [];
+    if (opts.orderByDesc === undefined) opts.orderByDesc = [];
+
     let text = "";
 
     if (opts.distinct) {
