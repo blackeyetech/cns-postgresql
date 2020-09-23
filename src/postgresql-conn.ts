@@ -3,7 +3,7 @@ import CNShell from "cn-shell";
 import * as pg from "pg";
 
 //Interfaces here
-interface ReadOptions {
+interface CNPostgreSqlReadOptions {
   orderBy: string[];
   orderByDesc: string[];
   groupBy: string[];
@@ -84,7 +84,7 @@ class CNPostgreSqlConn extends CNShell {
     collection: string,
     fields: string[] = ["*"],
     criteria: { [key: string]: any } = {},
-    opts: ReadOptions = {
+    opts: CNPostgreSqlReadOptions = {
       format: "json",
       distinct: false,
       orderBy: [],
@@ -345,4 +345,4 @@ class CNPostgreSqlConn extends CNShell {
   }
 }
 
-export { CNPostgreSqlConn };
+export { CNPostgreSqlConn, CNPostgreSqlReadOptions };

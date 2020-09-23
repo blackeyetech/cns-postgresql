@@ -1,6 +1,6 @@
 // imports here
 import CNShell from "cn-shell";
-import { CNPostgreSqlConn } from "./postgresql-conn";
+import { CNPostgreSqlConn, CNPostgreSqlReadOptions } from "./postgresql-conn";
 import * as pg from "pg";
 
 // Postgres config consts here
@@ -119,4 +119,4 @@ class CNPostgreSql extends CNShell {
   }
 }
 
-export { CNPostgreSql, CNPostgreSqlConn };
+export { CNPostgreSql, CNPostgreSqlConn, CNPostgreSqlReadOptions };
