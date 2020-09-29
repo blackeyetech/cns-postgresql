@@ -10,10 +10,12 @@ const CFG_PG_PASSWORD = "PG_PASSWORD";
 const CFG_PG_HOST = "PG_HOST";
 const CFG_PG_PORT = "PG_PORT";
 const CFG_PG_SSL = "PG_SSL";
+const CFG_PG_OLD = "PG_OLD";
 
 const DEFAULT_HOST = "localhost";
 const DEFAULT_PORT = "5432";
 const DEFAULT_SSL = "N";
+const DEFAULT_OLD = "N";
 
 // Class CNPostgreSQL here
 class CNPostgreSql extends CNShell {
@@ -30,17 +32,29 @@ class CNPostgreSql extends CNShell {
     let host = this.getCfg(CFG_PG_HOST, DEFAULT_HOST);
     let port = parseInt(this.getCfg(CFG_PG_PORT, DEFAULT_PORT), 10);
     let ssl = this.getCfg(CFG_PG_SSL, DEFAULT_SSL).toUpperCase();
+    let old = this.getCfg(CFG_PG_OLD, DEFAULT_OLD).toUpperCase();
 
-    this._pool = new pg.Pool({
-      user,
-      database,
-      password,
-      host,
-      port,
-      ssl: {
-        rejectUnauthorized: ssl === "N" ? false : true,
-      },
-    });
+    if (old === "N") {
+      this._pool = new pg.Pool({
+        user,
+        database,
+        password,
+        host,
+        port,
+        ssl: {
+          rejectUnauthorized: ssl === "N" ? false : true,
+        },
+      });
+    } else {
+      this._pool = new pg.Pool({
+        user,
+        database,
+        password,
+        host,
+        port,
+        ssl: ssl === "N" ? false : true,
+      });
+    }
 
     this._pool.on("error", e => {
       this.error(e);
